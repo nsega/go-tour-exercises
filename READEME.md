@@ -1,1 +1,3 @@
-# golang practice with using a tour of go
+# Go tour exercises
+
+This project is Practing golang with using 'A Tour Of Go(http://tour.golang.org/)'.
