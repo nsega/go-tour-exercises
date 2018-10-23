@@ -1,24 +1,19 @@
 package main
 
 import (
-	"fmt"
-	"math"
+"fmt"
+"math"
 )
 
 func Sqrt(x float64) float64 {
-	z := float64(2.)
-	s := float64(0)
-	for {
-		z = z - (z*z-x)/(2*z)
-		if math.Abs(s-z) < 1e-15 {
-			break
-		}
-		s = z
+	z := 1.0
+	for i := 0; i < 10; i++ {
+		z -= (z*z - x) / (2*z)
 	}
-	return s
+	return z
 }
 
 func main() {
-	fmt.Println(Sqrt(2))
-	fmt.Println(math.Sqrt(2))
+	fmt.Println(Sqrt(9))
+	fmt.Println(math.Sqrt(9))
 }
