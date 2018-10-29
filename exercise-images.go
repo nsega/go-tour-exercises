@@ -1,11 +1,26 @@
 package main
 
-import "golang.org/x/tour/pic"
+import (
+	"golang.org/x/tour/pic"
+	"image"
+	"image/color"
+)
 
 type Image struct{}
 
-func main() {
-	m := Image{}
-	pic.ShowImage(m)
+func (a *Image) ColorModel() color.Model {
+	return color.RGBAModel
 }
 
+func (a *Image) Bounds() image.Rectangle {
+	return image.Rectangle{image.Point{0, 0}, image.Point{200, 100}}
+}
+
+func (a *Image) At(x, y int) color.Color {
+	return color.RGBA{uint8(x % 256), uint8(y % 256), uint8((x * y) % 256), 255}
+}
+
+func main() {
+	m := Image{}
+	pic.ShowImage(&m)
+}
